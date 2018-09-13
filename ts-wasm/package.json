@@ -5,12 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --noDebug",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^23.3.2",
+    "@types/node": "^10.9.4",
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
     "babel-loader": "^8.0.2",
     "jest": "^23.6.0",
     "ts-jest": "^23.1.4",
